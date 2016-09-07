@@ -1,0 +1,2 @@
+print('Seconds in 42min 42sec')
+print((42*60)+42)
