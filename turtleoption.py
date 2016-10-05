@@ -1,32 +1,15 @@
-import Turtle
-import random 
-import math
+import turtle
+canvas = Screen()
+canvas.setup(400,200)
 
-def drunkard_walk(x,y,n):
-    q=x
-    r=y
-    for i in range(n):
-        z = random.choice(['east','west','north','south'])
-        if z == 'east':
-            q = q + 1
-            Turtle.right(q)
-        if z == 'west':
-            q = q - 1
-            Turtle.left(q)
-        if z == 'north':
-            r = r+1
-            Turtle.up(r)
-        if z == 'south':
-            r = r-1
-            Turtle.down(r)
-    return math.sqrt((q-x)**2+(r-y)**2)
+sarah = Turtle()
+sarah.forward(50)          # make sarah draw a square
+sarah.left(90)
+sarah.forward(50)
+sarah.left(90)
+sarah.forward(50)
+sarah.left(90)
+sarah.forward(50)
+sarah.left(90)
 
-
-x=int(input('please put in x cord'))
-y=int(input('please put in y cord'))
-n=int(input('please put in number of moves'))
-
-print("The drunkard started from (%d,%d)." % (x, y))
-distance = drunkard_walk(x, y, n)
-print(" After", n, "intersections, he's",
-      distance, "blocks from where he started.")
+canvas.exitonclick()

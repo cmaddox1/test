@@ -5,15 +5,11 @@
 
 from random import randint
 from math import log
-
 # Define constant variables.
-HUMAN = 0
-COMPUTER = 1
-SMART = 0
-DUMB = 1
 
 # Create the initial pile, determine the starting player and the computer's
 # strategy.
+
 
 
 
@@ -22,23 +18,34 @@ def nim():
     return True if the winner is human, False if winner is computer.
     """
     # While the game is still being played.
-    
+    HUMAN = 0
+    COMPUTER = 1
+    SMART = 0
+    DUMB = 1
+
     pile = randint(10, 100)
     turn = randint(0, 1)
     strategy = randint(0, 1)
-    while pile > 0:
+ 
+    while pile > 1:
         if turn == COMPUTER:
             if pile == 1:
                 # Take the last marble.
+                take=1
+                pile=pile-take
                 return False
             elif strategy == DUMB:
                 # Take a random, legal number of marbles from the pile.
-                take=randint(1,(pile/2))
+                inti = round(pile/2,0) #makes an integer
+                take=randint(1,inti)
                 pile=pile-take
             elif pile == 3 or pile == 7 or pile == 15 or pile == 31 or pile == 63:
                 # The computer is smart, but can't make a smart move.
                 # Take a random, legal number of marbles from the pile.
-                take=randint(1,(pile/2))
+                inti = round(pile/2,0)
+                if inti ==2:
+                    inti =1
+                take=randint(1,inti)
                 pile=pile-take
             else:
                 # The computer is smart and can make a smart move.
@@ -48,10 +55,11 @@ def nim():
                 n=int((log(pile+1))/log(2)) #this solves for the power of 2 that is half 
                 g=n-2 #this determines the number on the list to pull
                 take = pile - goodlist[g]
+                take= abs(take)
 
 
             # Update pile
-            pile=pile-take
+                pile=pile-take
             print("The computer took %d marbles, leaving %d.\n" % (take, pile))
             # take is the variable you might need above
             turn = HUMAN
@@ -64,6 +72,7 @@ def nim():
             if take>(pile/2):
                 print('Invalid Number')
                 take = int(input("Please input new number. "))
+                pile=pile-take
             else:
                 # Update pile
                     pile=pile-take

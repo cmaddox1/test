@@ -44,7 +44,7 @@ print('Question 3')
 def sum_squares(n):
     result = 1
     for i in range(n):
-            result += i**2
+        result += i**2
     return result
 print('print(sum_squares(1))')
 print(sum_squares(1))
