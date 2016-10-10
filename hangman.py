@@ -144,6 +144,8 @@ def hangman(secretWord):
         print('You have %d guesses left' % Maxguesses )
         print('Available letters:',getAvailableLetters(lettersGuessed))
         letta = input('Please input a letter or guess the word')#used to collect the letter
+        if letta in secretWord:
+            MaxGuess=MaxGuess+1#this redefines maxguess so it doesn't change the amount of turns when they guess right'
         if letta == secretWord:#added this if statement so the player has the change to guess the whole word if they feel they know the answer
             break#this break stops the while loop so it can go to the end of the game if they are right
         newlettersGuessed.append(letta)#adds the letters to the previously guessed section 
